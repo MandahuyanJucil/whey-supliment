@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <div class="enterdetails">
+        <h3>ID</h3>
+        <input type="text" id="enterID">
+        <br>
+        <h3>name</h3>
+        <input type="text" id="entername">
+
+        <h3>AGE</h3>
+        <input type="text" id="enterage">
+
+
+        <button id="insert">Inset</button>
+        <button id="update">Update</button>
+        <button id="remove">Remove</button>
+      </div>
+<br><br>
+
+        <div id="finddetails">
+           
+            <h4>Find ID</h4>
+            <h4>ID</h4>
+            <input type="text" id="findid"> <br><br>
+            <button id="find">Find</button>
+
+
+            <h3 id="findname" type="text"></h3>
+            <h3 id="findage" type="text"></h3>
+
+
+
+        </div>
+
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__firstdiv">
+           <div class="footer__firstdiv__h2">
+             <h2>Our Policy</h2> <h3>Contact Us</h3>
+           </div>
+        </div>
+     </footer>
+
+     <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBoFgr38Pv4GcLj0uGmYZ4-Yjq1sZZdSRc",
+        authDomain: "wheylogindatabse.firebaseapp.com",
+        databaseURL: "https://wheylogindatabse-default-rtdb.firebaseio.com",
+        projectId: "wheylogindatabse",
+        storageBucket: "wheylogindatabse.appspot.com",
+        messagingSenderId: "890113652451",
+        appId: "1:890113652451:web:77a707c98e1450fdc9f7d6"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import{getDatabase, set, get, update, remove, ref, child}
+      from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"
+      
+      const db = getDatabase();
+
+      var enterID = document.querySelector("#enterID");
+      var entername = document.querySelector("#entername");
+      var enterage = document.querySelector("#enterage");
+      var insert = document.querySelector("#insert");
+      var update = document.querySelector("#update");
+      var remove = document.querySelector("#remove");
+      var finddetails = document.querySelector("#finddetails");
+      var findid = document.querySelector("#findid");
+      var find = document.querySelector("#find");
+      var findname = document.querySelector("#findname");
+      var findage = document.querySelector("#findage");
+
+      function insertdata(){
+       set( ref(db, "people/" + enterID.value), {
+        name: entername.value,
+        id: enterID.value,
+        age: enterage.value
+
+       })
+       .then(()=>{
+        alert("Log in Success");
+       })    
+      .catch((error)=>{
+          alert(error);
+      })
+
+      }
+
+
+
+      function finddata(){
+
+}
+
+
+function updatedata(){
+
+}
+
+
+function removetdata(){
+
+}
+
+             insert.addEventListener('click', insertdata);
+    </script>
+
+
+</body>
+</html>
